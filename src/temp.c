@@ -1,30 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   temp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/12 17:17:12 by tpirinen         ###   ########.fr       */
+/*   Created: 2025/07/11 18:57:26 by tpirinen          #+#    #+#             */
+/*   Updated: 2025/07/14 18:00:41 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "../libft/libft.h"
+#include "../lib.h"
 
-struct s_stack
-{
-	int	max_size;
-	int	top;
-	int	*integer_array;
-};
-
-
-struct s_stack	*create_stack(int ac, char **av);
-
-
-
-
-
-#endif

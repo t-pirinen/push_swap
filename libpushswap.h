@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_stack.c                                     :+:      :+:    :+:   */
+/*   libpushswap.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 18:57:26 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/12 17:18:05 by tpirinen         ###   ########.fr       */
+/*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
+/*   Updated: 2025/07/14 19:29:31 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../lib.h"
+#ifndef LIB_H
+# define LIB_H
 
-struct s_stack	*create_stack(int ac, char **av)
+# include "../libft/libft.h"
+
+struct s_stacks
 {
-	struct s_stack	*new_stack;
-	int	i;
-	
-	new_stack->top = 0;
-	new_stack->integer_array = malloc((ac - 1) * sizeof(int));
-	i = 0;
-	while (i < ac - 1)
-	{
-		new_stack->integer_array[i] = ft_atoi(av[i + 1]);
-		i++;
-	}
-	// (void)av;
-	return(new_stack);
-}
+	int		*stack_a;
+	int		*stack_b;
+	int		a_size;
+	int		b_size;
+	char	*args;
+};
+
+
+
+
+
+
+#endif

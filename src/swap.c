@@ -6,8 +6,8 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:41:53 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/12 16:42:15 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:00:49 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	swap_one()
+// int	swap_one
