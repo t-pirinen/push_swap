@@ -9,7 +9,7 @@ LIBFT = libft/libft.a
 SRC_PATH = src/
 OBJ_PATH = obj/
 
-SRC = main.c create_stack.c
+SRC = main.c checks_and_exit.c push_swap_rotate.c sorting.c stacks.c
 SRCS = $(addprefix src/, $(SRC))
 
 OBJ = $(SRC:.c=.o)
@@ -29,7 +29,6 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-# @$(CC) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "PUSH_SWAP: Created executable \"push_swap\""
 
 clean:

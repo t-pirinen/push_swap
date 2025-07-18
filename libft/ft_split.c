@@ -6,15 +6,15 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 18:10:48 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/05/20 18:16:31 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:51:57 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_str(char const *s, char c);
-static char		**ft_str_alloc(char **arr, char const *s, char c, size_t i);
-static char		**ft_str_fill(char **arr, char const *s, char c);
+size_t			ft_count_words(char const *s, char c);
+static char		**word_alloc(char **arr, char const *s, char c, size_t i);
+static char		**fill_array(char **arr, char const *s, char c);
 static void		ft_free_all(char **arr, size_t str_count);
 
 /*	Allocates memory (using malloc(3)) and returns an array of strings
@@ -23,31 +23,31 @@ static void		ft_free_all(char **arr, size_t str_count);
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	size_t	str_count;
+	size_t	word_count;
 
 	if (!s)
 		return (NULL);
-	str_count = ft_count_str(s, c);
-	arr = malloc((str_count + 1) * sizeof(char *));
+	word_count = ft_count_words(s, c);
+	arr = malloc((word_count + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
-	arr[str_count] = NULL;
-	if (!ft_str_fill(arr, s, c))
+	arr[word_count] = NULL;
+	if (!fill_array(arr, s, c))
 	{
-		ft_free_all(arr, str_count);
+		ft_free_all(arr, word_count);
 		return (NULL);
 	}
 	return (arr);
 }
 
-/*	Counts the number of strings to be created that are delimited
+/*	Counts the number words that are delimited
 	by the character 'c'.													*/
-static size_t	ft_count_str(char const *s, char c)
+size_t	ft_count_words(char const *s, char c)
 {
-	size_t	str_count;
+	size_t	word_count;
 	size_t	i;
 
-	str_count = 0;
+	word_count = 0;
 	i = 0;
 	while (s[i])
 	{
@@ -55,16 +55,16 @@ static size_t	ft_count_str(char const *s, char c)
 			i++;
 		if (s[i])
 		{
-			str_count++;
+			word_count++;
 			while (s[i] && s[i] != c)
 				i++;
 		}
 	}
-	return (str_count);
+	return (word_count);
 }
 
-/*	Fills the array with the strings to be created.							*/
-static char	**ft_str_fill(char **arr, char const *s, char c)
+/*	Fills the array with the words.							*/
+static char	**fill_array(char **arr, char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -76,7 +76,7 @@ static char	**ft_str_fill(char **arr, char const *s, char c)
 			s++;
 		if (*s)
 		{
-			if (!ft_str_alloc(arr, s, c, i))
+			if (!word_alloc(arr, s, c, i))
 				return (NULL);
 			j = 0;
 			while (*s && *s != c)
@@ -88,31 +88,31 @@ static char	**ft_str_fill(char **arr, char const *s, char c)
 	return (arr);
 }
 
-/*	Allocates memory for all the strings to be created.						*/
-static char	**ft_str_alloc(char **arr, char const *s, char c, size_t i)
+/*	Allocates memory for a word												*/
+static char	**word_alloc(char **arr, char const *word, char c, size_t i)
 {
-	size_t	str_size;
-	char	*end_of_str;
+	size_t	word_size;
+	char	*end_of_word;
 
-	end_of_str = ft_strchr(s, (int)c);
-	if (end_of_str == NULL)
-		str_size = ft_strlen(s);
+	end_of_word = ft_strchr(word, (int)c);
+	if (end_of_word == NULL)
+		word_size = ft_strlen(word);
 	else
-		str_size = end_of_str - s;
-	arr[i] = malloc(str_size + 1);
+		word_size = end_of_word - word;
+	arr[i] = malloc(word_size + 1);
 	if (!arr[i])
 		return (NULL);
 	return (arr);
 }
 
-/*	Frees the memory allocated to the strings. Used when any of the
+/*	Frees the memory allocated to the words. Used when any of the
 	memory allocations fail.												*/
-static void	ft_free_all(char **arr, size_t str_count)
+static void	ft_free_all(char **arr, size_t word_count)
 {
 	size_t	i;
 
 	i = 0;
-	while (arr[i] && i < str_count)
+	while (arr[i] && i < word_count)
 	{
 		free(arr[i]);
 		i++;

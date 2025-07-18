@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:31:45 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/06 13:31:16 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:21:59 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	*ft_memset(void *s, int c, size_t n);
 
 /*		strings	*/
 int		ft_atoi(const char *nptr);
+size_t	ft_count_words(char const *s, char c);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
