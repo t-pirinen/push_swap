@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 22:46:20 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/06/03 15:45:43 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/19 20:03:01 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ssize_t	ft_putptr_fd(void *ptr, int fd)
 {
 	ssize_t	err;
 	ssize_t	chars_printed;
-	
+
 	if (!ptr)
 		return (write(fd, "(nil)", 5));
 	chars_printed = 0;

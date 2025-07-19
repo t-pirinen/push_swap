@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:30:52 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/16 22:41:39 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:53:15 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,59 @@
 
 void	push(char *str, struct s_stacks *stacks)
 {
-	int	tmp;
+	int	temp;
 
-	if (ft_strncmp(str, "pa", 3) == 0)
+	if (ft_strncmp(str, "pa", 3) == 0 && stacks->b_size > 0)
 	{
-		if (stacks->b_size <= 0)
-			return ;
-		tmp = stacks->stack_b[0];
-		ft_memmove(stacks->stack_a + 1, stacks->stack_a, sizeof(int) * stacks->a_size);
-		stacks->stack_a[0] = tmp;
-		stacks->b_size--;
-		ft_memmove(stacks->stack_b, stacks->stack_b + 1, sizeof(int) * stacks->b_size);
+		temp = stacks->b[0];
+		ft_memmove(stacks->a + 1, stacks->a, sizeof(int) * stacks->a_size);
+		stacks->a[0] = temp;
 		stacks->a_size++;
+		stacks->b_size--;
+		ft_memmove(stacks->b, stacks->b + 1, sizeof(int) * stacks->b_size);
 	}
-	else if (ft_strncmp(str, "pb", 3) == 0)
+	else if (ft_strncmp(str, "pb", 3) == 0 && stacks->a_size > 0)
 	{
-		if (stacks->a_size <= 0)
-			return ;
-		tmp = stacks->stack_a[0];
-		ft_memmove(stacks->stack_b + 1, stacks->stack_b, sizeof(int) * stacks->b_size);
-		stacks->stack_b[0] = tmp;
-		stacks->a_size--;
-		ft_memmove(stacks->stack_a, stacks->stack_a + 1, sizeof(int) * stacks->a_size);
+		temp = stacks->a[0];
+		ft_memmove(stacks->b + 1, stacks->b, sizeof(int) * stacks->b_size);
+		stacks->b[0] = temp;
 		stacks->b_size++;
+		stacks->a_size--;
+		ft_memmove(stacks->a, stacks->a + 1, sizeof(int) * stacks->a_size);
 	}
 	ft_putendl_fd(str, 1);
 }
 
 void	swap(char *str, int *array, int size)
 {
-	int	tmp;
+	int	temp;
 
 	if (size <= 0)
 		return ;
-	tmp = array[0];
+	temp = array[0];
 	array[0] = array[1];
-	array[1] = tmp;
+	array[1] = temp;
 	ft_putendl_fd(str, 1);
 }
 
 void	rotate(int *array, int size, char *direction, char *list)
 {
-	int	tmp;
+	int	temp;
 
 	if (size < 0)
 		return ;
 	if (ft_strncmp(direction, "up", 5) == 0)
 	{
-		tmp = array[0];
+		temp = array[0];
 		ft_memmove(array, array + 1, sizeof(int) * (size - 1));
-		array[size - 1] = tmp;
+		array[size - 1] = temp;
 		write(1, "r", 1);
 	}
 	else if (ft_strncmp(direction, "down", 5) == 0)
 	{
-		tmp = array[size - 1];
+		temp = array[size - 1];
 		ft_memmove(array + 1, array, sizeof(int) * (size - 1));
-		array[0] = tmp;
+		array[0] = temp;
 		write(1, "rr", 2);
 	}
 	ft_putendl_fd(list, 1);

@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:31:45 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/15 19:21:59 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/19 20:04:42 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
+/*		int array */
+void	ft_int_arr_copy(int *dest, int *src, int size);
+
 /*		print functions	*/
 int		ft_printf(const char *s, ...);
 ssize_t	ft_putchar_fd(char c, int fd);
@@ -91,7 +94,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-/*		file reading	*/ 
+/*		file reading	*/
 char	*get_next_line(int fd);
 
 #endif
