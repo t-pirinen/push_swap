@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:30:52 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/19 18:53:15 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/20 16:58:45 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	swap(char *str, int *array, int size)
 	ft_putendl_fd(str, 1);
 }
 
-void	rotate(int *array, int size, char *direction, char *list)
+void	rotate(int *array, int size, char *direction, char *stack_name)
 {
 	int	temp;
 
@@ -69,5 +69,5 @@ void	rotate(int *array, int size, char *direction, char *list)
 		array[0] = temp;
 		write(1, "rr", 2);
 	}
-	ft_putendl_fd(list, 1);
+	ft_putendl_fd(stack_name, 1);
 }
