@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:15:41 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/20 18:22:24 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/20 20:55:11 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	radix_sort(struct s_stacks *stacks)
 	while (i < bit_size)
 	{
 		size_idx = stacks->a_size;
-		while (size_idx-- && !is_array_in_order(stacks))
+		while (size_idx-- && !check_array_order(stacks))
 		{
 			if ((stacks->a[0] >> i) & 1)
 				rotate(stacks->a, stacks->a_size, "up", "a");
@@ -42,14 +42,14 @@ void	radix_sort(struct s_stacks *stacks)
 
 void	radix_sort_b(struct s_stacks *stacks, int b_size, int bit_size, int i)
 {
-	while (b_size-- && i < bit_size && !is_array_in_order(stacks))
+	while (b_size-- && i < bit_size && !check_array_order(stacks))
 	{
 		if (((stacks->b[0] >> i) & 1) == 0)
 			rotate(stacks->b, stacks->b_size, "up", "b");
 		else
 			push("pa", stacks);
 	}
-	if (is_array_in_order(stacks))
+	if (check_array_order(stacks))
 		while (stacks->b_size != 0)
 			push("pa", stacks);
 }

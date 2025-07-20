@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:41:53 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/20 15:17:38 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/20 20:55:11 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	check_for_duplicates_and_order(struct s_stacks *stacks)
 		}
 		i++;
 	}
-	if (is_array_in_order(stacks))
+	if (check_array_order(stacks))
 		free_and_exit_with_msg(stacks, NULL);
 }
 
-int	is_array_in_order(struct s_stacks *stacks)
+int	check_array_order(struct s_stacks *stacks)
 {
 	int	i;
 
