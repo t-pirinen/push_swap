@@ -6,32 +6,13 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:26 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/20 15:26:15 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:15:44 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libpushswap.h"
 
-void	init_stacks_and_populate_a(int ac, char **av, struct s_stacks *stacks)
-{
-	int		i;
-	int		j;
-
-	stacks->a_size = ac - 1;
-	stacks->b_size = 0;
-	stacks->a = malloc(stacks->a_size * sizeof * stacks->a);
-	if (NULL == stacks->a)
-		free_and_exit_with_msg(stacks, "Error\n");
-	stacks->b = malloc(stacks->a_size * sizeof * stacks->b);
-	if (NULL == stacks->b)
-		free_and_exit_with_msg(stacks, "Error\n");
-	i = 1;
-	j = 0;
-	while (av[i])
-		stacks->a[j++] = convert_arg_to_int(av[i++], stacks);
-}
-
-int	convert_arg_to_int(const char *n, struct s_stacks *stacks)
+static int	convert_arg_to_int(const char *n, struct s_stacks *stacks)
 {
 	long long	result;
 	int			sign;
@@ -55,6 +36,25 @@ int	convert_arg_to_int(const char *n, struct s_stacks *stacks)
 		i++;
 	}
 	return ((int)(sign * result));
+}
+
+void	init_stacks_and_populate_a(int ac, char **av, struct s_stacks *stacks)
+{
+	int		i;
+	int		j;
+
+	stacks->a_size = ac - 1;
+	stacks->b_size = 0;
+	stacks->a = malloc(stacks->a_size * sizeof * stacks->a);
+	if (NULL == stacks->a)
+		free_and_exit_with_msg(stacks, "Error\n");
+	stacks->b = malloc(stacks->a_size * sizeof * stacks->b);
+	if (NULL == stacks->b)
+		free_and_exit_with_msg(stacks, "Error\n");
+	i = 1;
+	j = 0;
+	while (av[i])
+		stacks->a[j++] = convert_arg_to_int(av[i++], stacks);
 }
 
 void	create_index(struct s_stacks *stacks)

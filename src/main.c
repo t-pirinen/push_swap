@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:38:30 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/20 15:06:56 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:22:08 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int ac, char **av)
 	if (NULL == stacks)
 		exit(1);
 	init_stacks_and_populate_a(ac, av, stacks);
-	check_for_duplicates_and_order(stacks);
 	create_index(stacks);
+	exit_if_duplicates_or_in_order(stacks);
 	if (stacks->a_size == 2)
 		swap("sa", stacks->a, stacks->a_size);
 	else if (stacks->a_size == 3)
