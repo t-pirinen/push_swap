@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/23 12:49:40 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:17:47 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	radix_sort_b(struct s_stacks *stacks, int b_size, int bit_size, int i);
 void	sort_three(struct s_stacks *stacks);
 void	sort_four_or_five(struct s_stacks *stacks);
 
-void	push(char *str, struct s_stacks *stacks);
-void	swap(char *str, int *array, int size);
-void	rotate(int *array, int size, char *direction, char *list);
+void	push(char *instruction, struct s_stacks *stacks);
+void	swap(char *instruction, int *stack, int size);
+void	rotate(int *stack, int size, char *direction, char *list);
 
 #endif

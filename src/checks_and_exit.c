@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:41:53 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/22 20:20:20 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:33:32 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@ void	free_and_exit_with_msg(struct s_stacks *stacks, char *msg)
 	if (stacks)
 	{
 		if (stacks->a)
+		{
 			free(stacks->a);
+			stacks->a = NULL;
+		}
 		if (stacks->b)
+		{
 			free(stacks->b);
+			stacks->b = NULL;
+		}
 		if (stacks)
+		{
 			free(stacks);
+			stacks = NULL;
+		}
 	}
 	if (NULL == msg)
 		exit(0);
