@@ -30,17 +30,14 @@ $(LIBFT):
 
 $(NAME): $(OBJS) $(HEADER)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "PUSH_SWAP: Created executable \"push_swap\""
 
 clean:
 	@rm -rf obj
 	@make clean -s -C libft
-	@echo "PUSH_SWAP: Removed object files"
 
 fclean: clean
 	@rm -rf push_swap
 	@make fclean -s -C libft
-	@echo "PUSH_SWAP: Removed executable \"push_swap\""
 
 re: clean all
 

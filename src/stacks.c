@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:26 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/22 20:15:44 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:06:51 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static int	convert_arg_to_int(const char *n, struct s_stacks *stacks)
 	result = 0;
 	sign = 1;
 	i = 0;
-	if (n[0] == '-')
+	if (!n[0])
+		free_and_exit_with_msg(stacks, "Error\n");
+	if (n[0] == '-' && (n[1] >= '0' && n[1] <= '9'))
 	{
 		sign = -1;
 		i++;
