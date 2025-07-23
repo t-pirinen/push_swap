@@ -6,14 +6,14 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/22 20:20:20 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:49:40 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBPUSHSWAP_H
 # define LIBPUSHSWAP_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 struct s_stacks
 {
@@ -31,6 +31,7 @@ void	exit_if_duplicates_or_in_order(struct s_stacks *stacks);
 int		check_stack_a_order(struct s_stacks *stacks);
 
 void	radix_sort(struct s_stacks *stacks);
+void	radix_sort_b(struct s_stacks *stacks, int b_size, int bit_size, int i);
 void	sort_three(struct s_stacks *stacks);
 void	sort_four_or_five(struct s_stacks *stacks);
 

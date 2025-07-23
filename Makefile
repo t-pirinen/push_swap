@@ -1,6 +1,7 @@
 
 
 NAME = push_swap
+HEADER = libpushswap.h
 
 CC = cc -Wall -Wextra -Werror
 
@@ -27,7 +28,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 $(LIBFT):
 	@make -s -C libft
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "PUSH_SWAP: Created executable \"push_swap\""
 
