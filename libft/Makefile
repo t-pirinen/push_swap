@@ -60,19 +60,19 @@ SRC	=	ft_atoi.c			\
 OBJS = $(SRC:.c=.o)
 
 %.o: %.c $(HEADER)
-	@$(CC) -c $< -o $@
+	$(CC) -c $< -o $@
 
 # rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $^
+	ar rcs $(NAME) $^
 		
 clean:
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
