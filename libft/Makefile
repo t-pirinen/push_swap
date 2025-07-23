@@ -67,15 +67,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $^
-	@echo "LIBFT: Object files and libft.a created"
 		
 clean:
 	@rm -f $(OBJS)
-	@echo "LIBFT: Removed object files"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "LIBFT: Removed libft.a"
 
 re: fclean all
 
