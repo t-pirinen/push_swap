@@ -60,22 +60,19 @@ SRC	=	ft_atoi.c			\
 OBJS = $(SRC:.c=.o)
 
 %.o: %.c $(HEADER)
-	@$(CC) -c $< -o $@
+	$(CC) -c $< -o $@
 
 # rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $^
-	@echo "LIBFT: Object files and libft.a created"
+	ar rcs $(NAME) $^
 		
 clean:
-	@rm -f $(OBJS)
-	@echo "LIBFT: Removed object files"
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "LIBFT: Removed libft.a"
+	rm -f $(NAME)
 
 re: fclean all
 

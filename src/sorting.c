@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:15:41 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/25 16:20:00 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:25:29 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,6 @@ void	sort_four_or_five(struct s_stacks *stacks)
 	push("pa", stacks);
 }
 
-static void	radix_sort_b(struct s_stacks *stacks, int b_size, int bit_size, int i)
-{
-	i++;
-	while (b_size-- && i < bit_size && !check_stack_a_order(stacks))
-	{
-		if (((stacks->b[0] >> i) & 1) == 0)
-			rotate(stacks->b, stacks->b_size, up, "b");
-		else
-			push("pa", stacks);
-	}
-	if (check_stack_a_order(stacks))
-		while (stacks->b_size != 0)
-			push("pa", stacks);
-}
-
 void	radix_sort(struct s_stacks *stacks)
 {
 	int	size;
@@ -90,4 +75,19 @@ void	radix_sort(struct s_stacks *stacks)
 	}
 	while (stacks->b_size != 0)
 		push("pa", stacks);
+}
+
+void	radix_sort_b(struct s_stacks *stacks, int b_size, int bit_size, int i)
+{
+	i++;
+	while (b_size-- && i < bit_size && !check_stack_a_order(stacks))
+	{
+		if (((stacks->b[0] >> i) & 1) == 0)
+			rotate(stacks->b, stacks->b_size, "up", "b");
+		else
+			push("pa", stacks);
+	}
+	if (check_stack_a_order(stacks))
+		while (stacks->b_size != 0)
+			push("pa", stacks);
 }

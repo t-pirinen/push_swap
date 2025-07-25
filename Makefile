@@ -1,6 +1,7 @@
 
 
 NAME = push_swap
+HEADER = libpushswap.h
 
 CC = cc -Wall -Wextra -Werror
 
@@ -19,27 +20,24 @@ OBJS = $(addprefix obj/, $(OBJ))
 all: $(OBJ_PATH) $(LIBFT) $(NAME)
 
 $(OBJ_PATH):
-	@mkdir $(OBJ_PATH)
+	mkdir $(OBJ_PATH)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) -c $^ -o $@
+	$(CC) -c $^ -o $@
 
 $(LIBFT):
-	@make -s -C libft
+	make -C libft -s
 
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "PUSH_SWAP: Created executable \"push_swap\""
+$(NAME): $(OBJS) $(HEADER)
+	$(CC) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
-	@rm -rf obj
-	@make clean -s -C libft
-	@echo "PUSH_SWAP: Removed object files"
+	rm -rf obj
+	make clean -C libft -s
 
 fclean: clean
-	@rm -rf push_swap
-	@make fclean -s -C libft
-	@echo "PUSH_SWAP: Removed executable \"push_swap\""
+	rm -rf push_swap
+	make fclean -C libft -s
 
 re: clean all
 
