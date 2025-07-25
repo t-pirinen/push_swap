@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/22 20:20:20 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:17:52 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define LIBPUSHSWAP_H
 
 # include "../libft/libft.h"
+
+enum e_push_to
+{
+	pa, pb
+};
+
+enum e_dir
+{
+	up, down
+};
 
 struct s_stacks
 {

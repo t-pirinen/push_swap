@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:30:52 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/20 16:58:45 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:18:39 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,20 @@ void	swap(char *str, int *array, int size)
 	ft_putendl_fd(str, 1);
 }
 
-void	rotate(int *array, int size, char *direction, char *stack_name)
+void	rotate(int *array, int size, enum e_dir direction, char *stack_name)
 {
 	int	temp;
 
 	if (size < 0)
 		return ;
-	if (ft_strncmp(direction, "up", 5) == 0)
+	if (direction == up)
 	{
 		temp = array[0];
 		ft_memmove(array, array + 1, sizeof(int) * (size - 1));
 		array[size - 1] = temp;
 		write(1, "r", 1);
 	}
-	else if (ft_strncmp(direction, "down", 5) == 0)
+	else if (direction == down)
 	{
 		temp = array[size - 1];
 		ft_memmove(array + 1, array, sizeof(int) * (size - 1));
