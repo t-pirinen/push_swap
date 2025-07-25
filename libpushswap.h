@@ -6,7 +6,7 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:48:56 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/25 16:35:16 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/25 19:28:39 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ struct s_stacks
 
 enum e_push_to
 {
-	pa, pb
+	pa,
+	pb
 };
 
 enum e_dir
 {
-	up, down
+	up,
+	down
 };
-
+  
 void	init_stacks_and_populate_a(int ac, char **av, struct s_stacks *stacks);
 void	create_index(struct s_stacks *stacks);
 
