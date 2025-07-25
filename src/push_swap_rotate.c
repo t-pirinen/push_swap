@@ -6,17 +6,17 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 21:30:52 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/07/25 16:24:53 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:34:32 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libpushswap.h"
 
-void	push(char *instruction, struct s_stacks *stacks)
+void	push(enum e_push_to instruction, struct s_stacks *stacks)
 {
 	int	temp;
 
-	if (ft_strncmp(instruction, "pa", 3) == 0 && stacks->b_size > 0)
+	if (instruction == pa && stacks->b_size > 0)
 	{
 		temp = stacks->b[0];
 		ft_memmove(stacks->a + 1, stacks->a, sizeof(int) * stacks->a_size);
@@ -24,8 +24,9 @@ void	push(char *instruction, struct s_stacks *stacks)
 		stacks->a_size++;
 		stacks->b_size--;
 		ft_memmove(stacks->b, stacks->b + 1, sizeof(int) * stacks->b_size);
+		ft_putendl_fd("pa", 1);
 	}
-	else if (ft_strncmp(instruction, "pb", 3) == 0 && stacks->a_size > 0)
+	else if (instruction == pb && stacks->a_size > 0)
 	{
 		temp = stacks->a[0];
 		ft_memmove(stacks->b + 1, stacks->b, sizeof(int) * stacks->b_size);
@@ -33,8 +34,8 @@ void	push(char *instruction, struct s_stacks *stacks)
 		stacks->b_size++;
 		stacks->a_size--;
 		ft_memmove(stacks->a, stacks->a + 1, sizeof(int) * stacks->a_size);
+		ft_putendl_fd("pb", 1);
 	}
-	ft_putendl_fd(instruction, 1);
 }
 
 void	swap(char *instruction, int *stack, int size)
@@ -49,7 +50,7 @@ void	swap(char *instruction, int *stack, int size)
 	ft_putendl_fd(instruction, 1);
 }
 
-void	rotate(int *stack, int size, char *direction, char *stack_name)
+void	rotate(int *stack, int size, enum e_dir direction, char *stack_name)
 {
 	int	temp;
 
